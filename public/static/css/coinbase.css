@@ -1,0 +1,120 @@
+/*******************************
+            Global
+*******************************/
+
+html,
+body {
+  font-size: 15px;
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  background: #FFFFFF;
+  margin: 0px;
+  padding: 0px;
+  color: #555555;
+  text-rendering: optimizeLegibility;
+  min-width: 320px;
+}
+
+/*******************************
+          UI Overrides
+*******************************/
+
+.ui.header {
+  font-family: 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.ui.header,
+h1,
+h2 {
+  font-weight: normal !important;
+}
+
+h1.ui.header {
+  font-size: 3em;
+}
+
+h4.ui.header,
+h5.ui.header,
+.ui.icon.header {
+  font-weight: bold !important;
+}
+
+.ui.button {
+  font-weight: normal;
+  text-decoration: none;
+}
+
+a {
+  color: #009FDA;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00BAFF;
+}
+
+td#height:hover {
+  color: #00BAFF;
+}
+td#tx>div:hover {
+  color: #00BAFF;
+}
+p a {
+  font-weight: bold;
+}
+
+.masthead.segment {
+  background-image: url(images/bg.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  margin: 0em;
+  padding-top: 4rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
+  box-shadow: 0 -20px 10px 0 rgba(0, 0, 0, 0.1) inset !important;
+}
+
+.masthead.segment .column {
+  position: relative;
+}
+
+.masthead.segment .information {
+  margin: 3em 1em 1em 320px;
+}
+
+.masthead.segment .information p {
+  max-width: 600px;
+  margin: 0em 0px 2em 0em;
+  font-size: 1.2em;
+}
+
+.masthead.segment h1.ui.header .sub {
+  font-size: 0.7em;
+}
+
+.masthead.segment .image {
+  position: absolute;
+  left: 0%;
+  bottom: 10px;
+}
+.input#search {
+	vertical-align:middle;
+	float:right;
+}
+.footer.link.list {
+	text-align: center;
+  padding: 2em 2px 2em 2em;
+}
+.footer {
+	background-color: #00ffff;
+}
+
+.ui.popup {
+	max-width:600px;
+}
+

@@ -1,0 +1,82 @@
+doctype html
+html(lang='zh-cn')
+	head
+		meta(charset='utf-8')
+		title
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(href='static/css/semantic.css', rel='stylesheet')
+		link(href='static/css/coinbase.css', rel='stylesheet')
+		script(src='http://lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js')
+		script(src='static/javascript/semantic.js')
+		script(src='static/javascript/json2.js')
+		script(src='static/javascript/coinbase.js')
+	body#home
+		.ui.inverted.page.grid.masthead.segment
+			.column
+				.inverted.secondary.pointing.ui.menu
+					.header.item Coin Database
+				img.ui.medium.image(src="static/images/bek.png")
+				.ui.hidden.transition.information
+					h1.ui.inverted.header Welcome QE4
+					p Thanks for miner's hard work
+					p QE4 is coming
+					p each block product 1934x9x9x9=1,409,886 BEK
+					.large.basic.inverted.animated.fade.ui.button(onclick="location='http://bek.gpool.net'")
+						.visible.content print money[pool]
+						.hidden.content mining at GPool
+					.large.basic.inverted.animated.fade.ui.button(onclick="location='https://bitbucket.org/pankkake/bernankoin'")
+						.visible.content print money[solo]
+						.hidden.content Source code
+		.stripe
+			.ui.page.grid
+				.ui.column
+					.ui.two.column.grid
+						.ui.column
+							h2.ui.header
+								i.circular.emphasized.money.icon
+								.content Block Browser
+									.sub.header Bernankoin coin block chain
+						.ui.column
+							.ui.action.input.big#search
+								input(type="number",placeholder="Height")
+								.ui.icon.button#search
+									i.search.icon
+								.ui.icon.button#left
+									i.left.arrow.icon
+								.ui.icon.button#right
+									i.right.arrow.icon
+					.ui.message.hidden#warning This is a message for test
+					table.ui.table.celled.segment
+						thead
+							tr
+								th Height
+								th Tx
+								th time
+						tbody#height
+							tr
+								td 0
+								td 
+									p e869d795b855bf23c9331ef2bd077876d326e5352d6f79fe092c24e59b323c65
+									p e869d795b855bf23c9331ef2bd077876d326e5352d6f79fe092c24e59b323c65
+								td Mon Dec 16 23:15:31 2013
+		.ui.divider
+		.ui.footer.link.list
+			h2.ui.header 
+				.content Denation Address
+					.sub.header BEK:BqbUfvjWd73wyCghsujj34s35Jj2jSy1yx
+					.sub.header LTC:LeW17DpXixurK5CxKomB1pWGmnWHTDcjK5
+		.ui.dimmer.page.hidden
+			.ui.modal.scrolling.transition.hidden
+				i.close.icon
+				.header Tx detail
+				.content
+					.left
+						.ui.ribbon.purple.label Vin
+						.txdetail#vin
+					.right
+						.ui.ribbon.purple.label Vout
+						.txdetail#vout
+						
+							
+									
+	
