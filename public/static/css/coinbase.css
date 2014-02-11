@@ -118,3 +118,7 @@ p a {
 	max-width:600px;
 }
 
+.ui.modal {
+	width:80%;
+	margin-left:-40%;
+}

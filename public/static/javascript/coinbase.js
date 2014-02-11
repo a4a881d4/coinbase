@@ -47,6 +47,44 @@ function renderVin(vins)
 	$('.txdetail#vin').html(html);
 }
 
+function renderVinAddr(vins)
+{
+	var html = '<table class="ui small table segment celled">';
+	html+='<tr><th>source</th><th>value</th></tr>';	
+	html+='<tr id="vin_end_th"><th colspan="2">0</th></tr>';
+	html+='</table>';
+	$('.txdetail#vin').html(html);
+	var sum=0;	
+	for( var v in vins ) {
+		var vin=vins[v];
+		if( 'coinbase' in vin ) {
+			var tr='<tr>';
+			tr+='<td>coinbase</td>';
+			tr+='<td>'+vin['coinbase']+'</td>';
+			tr+='</tr>';
+			$('tr#vin_end_th').before(tr);
+		}
+		if( 'txid' in vin ) {
+			var url='/txout/'+vin['txid']+'?vout='+vin['vout'];
+			$.getJSON(url,function(data) {
+				if( data.err==null ) {
+					var tr='<tr>';
+					tr+='<td>';
+					for( var aidx in data.body.address ) {
+						tr+='<div>'+data.body.address[aidx]+'</div>';
+					}
+					tr+='</td>';
+					tr+='<td>'+data.body['value']+'</td>';
+					tr+='</tr>';
+					$('tr#vin_end_th').before(tr);
+					sum+=data.body['value'];
+					$('tr#vin_end_th th').text(sum);
+				}
+			});
+		}
+	}
+}
+
 function renderVout(vouts)
 {
 	var html = '<table class="ui small table segment celled">';
@@ -127,7 +165,7 @@ function load_heights(my)
 					$('.txdetail#vout').html("");
 						
 					if( tx['type']=='tx' ) {
-						renderVin(tx.vin);
+						renderVinAddr(tx.vin);
 						renderVout(tx.vout);
 					}
 

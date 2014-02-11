@@ -24,3 +24,30 @@ exports.heights = function(req,res) {
 		})
 	;
 };
+
+exports.txvout = function(req,res) {
+	var h = req.params['id'];
+	var db = nano.use('coinbase');
+	db.get( h, function(err,body) {
+			var result={};
+			if( err ) {
+				result={'err':err,'body':body};
+			}
+			else if( body.type!='tx' ) {
+				result={'err':'bad hash','body':null};
+			}
+			else {
+				var n = parseInt(req.query.vout);
+				result={'err':'cannot find vout','body':null};
+				var vouts = body.vout;
+				for( var idx in vouts ) {
+					if( vouts[idx].n==n ) {
+						result.err=null;
+						result.body={'address':vouts[idx].scriptPubKey.addresses,'value':vouts[idx].value,'spend':vouts[idx].spend};
+					}
+				}
+			}
+			res.json(result);
+		})
+	;
+};
