@@ -71,7 +71,7 @@ function renderVinAddr(vins)
 					var tr='<tr>';
 					tr+='<td>';
 					for( var aidx in data.body.address ) {
-						tr+='<div>'+data.body.address[aidx]+'</div>';
+						tr+='<div id="coinaddress">'+data.body.address[aidx]+'<div id="balance"></div></div>';
 					}
 					tr+='</td>';
 					tr+='<td>'+data.body['value']+'</td>';
@@ -79,6 +79,7 @@ function renderVinAddr(vins)
 					$('tr#vin_end_th').before(tr);
 					sum+=data.body['value'];
 					$('tr#vin_end_th th').text(sum);
+					$('#coinaddress').on('click',onAddressClick);
 				}
 			});
 		}
@@ -102,7 +103,7 @@ function renderVout(vouts)
 			html+='<td>'+vout['n']+'</td>';
 			html+='<td>';
 			for( var address in vout['scriptPubKey']['addresses'] ) 
-				html+='<div>'+vout['scriptPubKey']['addresses'][address]+'</div>';
+				html+='<div id="coinaddress">'+vout['scriptPubKey']['addresses'][address]+'<div id="balance"></div></div>';
 			html+='</td>';
 			html+='<td>'+vout['value']+'</td>';
 			html+='<td>'+(vout['value']/sum*100).toFixed(2)+'%</td>';
@@ -112,6 +113,7 @@ function renderVout(vouts)
 	html+='<tr><th colspan="4">'+sum+'</th></tr>';
 	html+='</table>';
 	$('.txdetail#vout').html(html);
+	$('div#coinaddress').on('click',onAddressClick);
 }
 
 function load_heights(my)
@@ -160,7 +162,6 @@ function load_heights(my)
   		$('td#tx #txid').on( 'click', function() {
 				var txid = $(this).text();
 				getHash(txid, function(tx) {
-					console.log(JSON.stringify(tx));
 					$('.txdetail#vin').html("");
 					$('.txdetail#vout').html("");
 						
@@ -179,6 +180,22 @@ function load_heights(my)
 			;
   	}
   });
+}
+
+
+function onAddressClick()
+{
+	if( $(this).children("#balance").text()=="" ) {
+		( function(obj) {
+				var url = '/account/bek?address='+obj.text();
+				$.getJSON( url, function( data ) { 
+				 if( data.err==null ) 
+					 if( data.body.rows[0].value ) 
+						 obj.children("#balance").text(data.body.rows[0].value);
+				 });
+			})($(this));
+	}		
+	$(this).children("#balance").toggle();
 }
 
 $(function() {
@@ -200,7 +217,6 @@ $(function() {
 			nh=0;
 		load_heights(nh);
 	});
-	
 });
 
 

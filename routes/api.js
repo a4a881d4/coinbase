@@ -51,3 +51,13 @@ exports.txvout = function(req,res) {
 		})
 	;
 };
+
+exports.account = function(req,res) {
+	var cointype = req.params['id'];
+	var address = req.query.address;
+	var db = nano.use('coinbase');
+	db.view('vout','coin',{ 'startkey':[ cointype, address ], 'limit':1, 'group_level':2 }, function(err,body) {
+			res.json({'err':err,'body':body});
+		})
+	;
+};	

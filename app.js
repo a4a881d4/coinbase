@@ -32,6 +32,7 @@ app.get('/', routes.index);
 app.get('/hash/:id', api.hash);
 app.get('/heights/:id',api.heights);
 app.get('/txout/:id',api.txvout);
+app.get('/account/:id',api.account);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -64,6 +64,10 @@ td#height:hover {
 td#tx>div:hover {
   color: #00BAFF;
 }
+#coinaddress:hover {
+  color: #00BAFF;
+}
+
 p a {
   font-weight: bold;
 }
