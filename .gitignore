@@ -15,4 +15,12 @@ build
 .grunt
 
 node_modules
+config.js
 conf.js
+
+*~
+*.bak
+gpool*
+*.conf
+*.log
+

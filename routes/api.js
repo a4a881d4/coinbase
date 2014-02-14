@@ -2,8 +2,9 @@
 /*
  * GET users listing.
  */
-var couchdburl = require('../conf').couchdburl
-	; nano = require('nano')(couchdburl)
+var	config = require('../confige').config 
+		couchdburl = config.couchdburl
+	, nano = require('nano')(couchdburl)
   ;
   
 exports.hash = function(req, res){
