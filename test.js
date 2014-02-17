@@ -26,6 +26,7 @@ var createBlock = function( num ) {
 
 	array.forEach( function( h ) {
 		rpc.byHeight( h, function( blk ) {
+			function 
 			db.saveNode( blk, console.log );
 		});
 	});
