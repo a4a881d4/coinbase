@@ -26,14 +26,24 @@ var createBlock = function( num ) {
 
 	array.forEach( function( h ) {
 		rpc.byHeight( h, function( blk ) {
-			function 
-			db.saveNode( blk, console.log );
+			var txprocess = function( blknode ) {
+				console.log( blknode );
+				for( var txid in blknode.tx ) {
+					rpc.tx( blknode.tx[txid], function( txobj ) {
+						db.saveNode( txobj, function( txnode ) {
+							console.log( txnode );
+						});
+					});
+				}
+			};	 
+			db.saveNode( blk, txprocess );
 		});
 	});
 };
 
 //db.cleanNodes('type','block');
-createBlock(2);
+//createBlock(2);
+clean(100);
 
 
 /*
